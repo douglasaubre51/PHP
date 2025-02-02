@@ -1,0 +1,21 @@
+<html>
+    <head>
+	<title>
+	    Login Page
+	</title>
+    </head>
+
+    <body>
+	<h1>Login</h1>
+
+	<form name='form1' method=post action='loginManager.php' >
+	    <label>email :</label>
+	    <input type='email' name='emailBox' />
+
+	    <label>password :</label>
+	    <input type='password' name='passwordBox' />
+
+	    <button type='submit' name='submitBtn'>login</button>
+	</form>
+    </body>
+</html>
