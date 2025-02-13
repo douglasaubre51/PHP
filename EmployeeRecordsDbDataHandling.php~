@@ -38,7 +38,7 @@ if(isset($_POST['insertBtn'])){
 
 	$createTbSql="create table if not exists EmployeeRecords(EId int,EName varchar(30),Department varchar(10),BasicSalary int,DA decimal(10,2),HRA decimal(10,2),GrossSalary decimal(10,2))";
 	mysqli_query($conn,$createTbSql);
-	
+
 	#getting fields
 	$eId=$_POST['EId'];
 	$name=$_POST['Name'];
@@ -80,30 +80,31 @@ else if(isset($_POST['deleteBtn'])){
 }
 
 if(isset($_POST['selectBtn'])){
-	#db init
-	$conn=mysqli_connect('localhost','root','chancellor66');
-	($conn) ? print('connection ok!') : print('connection error!');
-	echo '<br><br>';
+    #db init
+    $conn=mysqli_connect('localhost','root','chancellor66');
+    ($conn) ? print('connection ok!') : print('connection error!');
+    echo '<br><br>';
 
-	mysqli_select_db($conn,'EmployeeDb');
+    mysqli_select_db($conn,'EmployeeDb');
 
-	#select db records
-	$selectSql="select * from EmployeeRecords";
-	$selectCursor=mysqli_query($conn,$selectSql);
-	(mysqli_num_rows($selectCursor)>0) ? print('') : print('empty table!');
+    #select db records
+    $selectSql="select * from EmployeeRecords";
+    $selectCursor=mysqli_query($conn,$selectSql);
+    (mysqli_num_rows($selectCursor)>0) ? print('') : print('empty table!');
 
-	#display db records
-	echo '<h1>Employee Records</h1>';
+    #display db records
 
-	while($i=mysqli_fetch_assoc($selectCursor)){
-	    echo "<h3>EId : $i[EId]</h3>";
-	    echo "<h3>Employee Name : $i[EName]</h3>";
-	    echo "<h3>Department : $i[Department]</h3>";
-	    echo "<h3>Basic Salary : $i[BasicSalary]</h3>";
-	    echo "<h3>DA : $i[DA]</h3>";
-	    echo "<h3>HRA : $i[HRA]</h3>";
-	    echo "<h3>Gross Salary : $i[GrossSalary]</h3>";
-	}
+
+    while($i=mysqli_fetch_assoc($selectCursor)){
+	echo '<h2>Employee Record</h2>';
+	echo "<h3>EId : $i[EId]</h3>";
+	echo "<h3>Employee Name : $i[EName]</h3>";
+	echo "<h3>Department : $i[Department]</h3>";
+	echo "<h3>Basic Salary : $i[BasicSalary]</h3>";
+	echo "<h3>DA : $i[DA]</h3>";
+	echo "<h3>HRA : $i[HRA]</h3>";
+	echo "<h3>Gross Salary : $i[GrossSalary]</h3>";
+    }
 }
 
 if(isset($_POST['updateBtn'])){
